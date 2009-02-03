@@ -1036,6 +1036,96 @@
 		vrLen = 1288;
 		vrLoc = 1618;
 	};
+	03E443420F390040007601D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */;
+		name = "FSWalkerAppDelegate.m: 76";
+		rLen = 0;
+		rLoc = 2353;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 1929;
+	};
+	03E443430F390040007601D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */;
+		name = "FSWalkerAppDelegate.m: 76";
+		rLen = 0;
+		rLoc = 2353;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 1929;
+	};
+	03E443450F390045007601D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */;
+		name = "FSWalkerAppDelegate.m: 76";
+		rLen = 0;
+		rLoc = 2353;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 1618;
+	};
+	03E443470F39016C007601D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */;
+		name = "FSWalkerAppDelegate.m: 76";
+		rLen = 0;
+		rLoc = 2353;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 1929;
+	};
+	03E443480F39016C007601D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */;
+		name = "FSWalkerAppDelegate.m: 76";
+		rLen = 0;
+		rLoc = 2353;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 1929;
+	};
+	03E4434A0F390173007601D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */;
+		name = "FSWalkerAppDelegate.m: 76";
+		rLen = 0;
+		rLoc = 2353;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 1618;
+	};
+	03E4434B0F390178007601D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */;
+		name = "FSWalkerAppDelegate.m: 76";
+		rLen = 0;
+		rLoc = 2353;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 1618;
+	};
+	03E4434C0F390192007601D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */;
+		name = "FSWalkerAppDelegate.m: 76";
+		rLen = 0;
+		rLoc = 2353;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 1618;
+	};
+	03E4434D0F3901F6007601D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */;
+		name = "FSWalkerAppDelegate.m: 76";
+		rLen = 0;
+		rLoc = 2353;
+		rType = 0;
+		vrLen = 610;
+		vrLoc = 1929;
+	};
 	03E75D1E0E58B0110044A3C8 /* InfoPanelController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1153, 449}}";
@@ -1078,7 +1168,7 @@
 		ignoreCount = 0;
 		lineNumber = 16;
 		location = FSWalker;
-		modificationTime = 255393712.881347;
+		modificationTime = 255393862.929682;
 		state = 1;
 	};
 	03EE3A0D0F360F1E00DF5A2D /* NSNumber+Bytes.h */ = {
@@ -1250,7 +1340,7 @@
 		ignoreCount = 0;
 		lineNumber = 133;
 		location = FSWalker;
-		modificationTime = 255393712.88257;
+		modificationTime = 255393862.930595;
 		state = 1;
 	};
 	03EE3ECC0F3658DD00DF5A2D /* PBXTextBookmark */ = {
@@ -1284,7 +1374,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 255393712.883873;
+		modificationTime = 255393862.931925;
 		state = 1;
 		symbolName = malloc_error_break;
 	};
@@ -1347,7 +1437,7 @@
 		ignoreCount = 0;
 		lineNumber = 36;
 		location = FSWalker;
-		modificationTime = 255393712.879915;
+		modificationTime = 255393862.928237;
 		state = 2;
 	};
 	1D3623240D0F684500981E51 /* FSWalkerAppDelegate.h */ = {
@@ -1359,9 +1449,9 @@
 	};
 	1D3623250D0F684500981E51 /* FSWalkerAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1158, 2310}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1379, 2254}}";
 			sepNavSelRange = "{2353, 0}";
-			sepNavVisRange = "{1618, 1288}";
+			sepNavVisRange = "{1929, 610}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* FSWalker */ = {
@@ -1394,7 +1484,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 031AA8620E57D08E009DD8A4 /* FSWalker */;
-		activeSDKPreference = iphoneos2.2;
+		activeSDKPreference = iphonesimulator2.2.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* FSWalker */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* FSWalker */,
@@ -1629,6 +1719,15 @@
 			03E443370F38FFAD007601D2 /* PBXTextBookmark */ = 03E443370F38FFAD007601D2 /* PBXTextBookmark */;
 			03E443380F38FFB0007601D2 /* PBXTextBookmark */ = 03E443380F38FFB0007601D2 /* PBXTextBookmark */;
 			03E4433A0F38FFC4007601D2 /* PBXTextBookmark */ = 03E4433A0F38FFC4007601D2 /* PBXTextBookmark */;
+			03E443420F390040007601D2 /* PBXTextBookmark */ = 03E443420F390040007601D2 /* PBXTextBookmark */;
+			03E443430F390040007601D2 /* PBXTextBookmark */ = 03E443430F390040007601D2 /* PBXTextBookmark */;
+			03E443450F390045007601D2 /* PBXTextBookmark */ = 03E443450F390045007601D2 /* PBXTextBookmark */;
+			03E443470F39016C007601D2 /* PBXTextBookmark */ = 03E443470F39016C007601D2 /* PBXTextBookmark */;
+			03E443480F39016C007601D2 /* PBXTextBookmark */ = 03E443480F39016C007601D2 /* PBXTextBookmark */;
+			03E4434A0F390173007601D2 /* PBXTextBookmark */ = 03E4434A0F390173007601D2 /* PBXTextBookmark */;
+			03E4434B0F390178007601D2 /* PBXTextBookmark */ = 03E4434B0F390178007601D2 /* PBXTextBookmark */;
+			03E4434C0F390192007601D2 /* PBXTextBookmark */ = 03E4434C0F390192007601D2 /* PBXTextBookmark */;
+			03E4434D0F3901F6007601D2 /* PBXTextBookmark */ = 03E4434D0F3901F6007601D2 /* PBXTextBookmark */;
 			03EE3D3E0F3637F100DF5A2D = 03EE3D3E0F3637F100DF5A2D /* PBXTextBookmark */;
 			03EE3DD60F36433D00DF5A2D = 03EE3DD60F36433D00DF5A2D /* PBXTextBookmark */;
 			03EE3DD80F36433D00DF5A2D = 03EE3DD80F36433D00DF5A2D /* PBXTextBookmark */;
