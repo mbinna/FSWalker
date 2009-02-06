@@ -86,7 +86,10 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
-	NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], @"ShouldStartServer", [NSNumber numberWithBool:YES], @"ShowAlertWhenServerStarts", nil];
+	NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:
+							  [NSNumber numberWithBool:YES], @"ShouldStartServer",
+							  [NSNumber numberWithBool:YES], @"ShowAlertWhenServerStarts",
+							  [NSNumber numberWithBool:YES], @"XMLPlist", nil];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 	
 	// Configure and show the window

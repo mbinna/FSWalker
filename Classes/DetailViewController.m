@@ -45,12 +45,38 @@
 
 - (void)viewDidAppear:(BOOL)animated {     // Called when the view has been fully transitioned onto the screen. Default does nothing
 	NSArray *imageExt = [NSArray arrayWithObjects:@"png", @"pdf", @"jpg", @"gif", nil];
-	NSArray *soundExt = [NSArray arrayWithObjects:@"caf", @"wav", @"aiff", nil];
+	NSArray *soundExt = [NSArray arrayWithObjects:@"m4r", @"caf", @"wav", @"aiff", nil];
 	
 	NSString *ext = [[fsItem.filename pathExtension] lowercaseString];
 	
-	// TODO: do something when can't access
-	if([imageExt containsObject:ext]) {
+	if([ext isEqualToString:@"plist"]) {
+		id plist = [NSDictionary dictionaryWithContentsOfFile:fsItem.filename];
+		if(!plist) plist = [NSArray arrayWithContentsOfFile:fsItem.filename];
+		if(!plist) return;
+		
+		BOOL txtFormat = ![[NSUserDefaults standardUserDefaults] boolForKey:@"XMLPlist"];
+		
+		if(txtFormat) {
+			textView.text = [plist description];
+			return;
+		}
+		
+		NSString *errorString = nil;
+		NSData *data = [NSPropertyListSerialization dataFromPropertyList:plist format:kCFPropertyListXMLFormat_v1_0 errorDescription:&errorString];
+		if(errorString) {
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error: can't open file"
+															message:errorString
+														   delegate:nil
+												  cancelButtonTitle:@"OK"
+												  otherButtonTitles: nil];
+			[alert show]; 
+			[alert release];
+			
+			[errorString release];
+		} else {		
+			textView.text = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+		}
+	} else if([imageExt containsObject:ext]) {
 		imageView.image = [UIImage imageWithContentsOfFile:fsItem.path];
 	} else if ([soundExt containsObject:ext]) {
 		// TODO: handle sound
@@ -64,12 +90,16 @@
 		AudioServicesPlaySystemSound (soundFileObject);
 		AudioServicesDisposeSystemSoundID (soundFileObject);
 		CFRelease (urlRef);
-	} else {		
+	} else {
 		NSError *e = nil;
 		NSString *s = [NSString stringWithContentsOfFile:fsItem.path encoding:NSUTF8StringEncoding error:&e];
+		if(e) { // try again
+			e = nil;
+			s = [NSString stringWithContentsOfFile:fsItem.path encoding:NSISOLatin1StringEncoding error:&e];			
+		}
+		
 		if(!e && s) {
 			imageView.image = nil;
-			//textView.backgroundColor = [UIColor lightGrayColor];
 			textView.text = s;
 		} else if (e) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error: can't open file"

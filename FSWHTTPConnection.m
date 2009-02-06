@@ -133,7 +133,7 @@
 					NSString *lastChange = [[dest lastChange] stringByPaddingToLength:28 withString:@" " startingAtIndex:0];
 					NSString *prettySize = [[dest prettySize] stringByPaddingToLength:28 withString:@" " startingAtIndex:0];
 					
-					NSString *pad = [@"" stringByPaddingToLength:(32-[[s lastPathComponent] length]) withString:@" " startingAtIndex:0];
+					NSString *pad = [@"" stringByPaddingToLength:(32-[[s lastPathComponent] length]) withString:@" " startingAtIndex:0]; // FIXME: crashed
 					[html appendFormat:@"<img src=\"%@\" /> <A HREF=\"%@\">%@</A>  %@  %@  %@\n", iconPath, dest, [s lastPathComponent], pad, lastChange, prettySize];
 				}
 			}
@@ -148,6 +148,21 @@
 			return [r autorelease];
 			
 		} else {
+			if([[filePath pathExtension] isEqualToString:@"plist"]) {
+				id plist = [NSDictionary dictionaryWithContentsOfFile:filePath];
+				if(!plist) plist = [NSArray arrayWithContentsOfFile:filePath];
+				if(!plist) return [[[HTTPDataResponse alloc] initWithData:nil] autorelease];
+				
+				NSString *errorString = nil;
+				NSData *data = [NSPropertyListSerialization dataFromPropertyList:plist format:kCFPropertyListXMLFormat_v1_0 errorDescription:&errorString];
+				if(errorString) {
+					data = [errorString dataUsingEncoding:NSUTF8StringEncoding];
+					return [[[HTTPDataResponse alloc] initWithData:data] autorelease];
+				} else {		
+					return [[[HTTPDataResponse alloc] initWithData:data] autorelease];
+				}
+			}
+			
 			return [[[HTTPFileResponse alloc] initWithFilePath:filePath] autorelease];	
 		}
 	}
