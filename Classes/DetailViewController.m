@@ -50,8 +50,8 @@
 	NSString *ext = [[fsItem.filename pathExtension] lowercaseString];
 	
 	if([ext isEqualToString:@"plist"]) {
-		id plist = [NSDictionary dictionaryWithContentsOfFile:fsItem.filename];
-		if(!plist) plist = [NSArray arrayWithContentsOfFile:fsItem.filename];
+		id plist = [NSDictionary dictionaryWithContentsOfFile:fsItem.path];
+		if(!plist) plist = [NSArray arrayWithContentsOfFile:fsItem.path];
 		if(!plist) return;
 		
 		BOOL txtFormat = ![[NSUserDefaults standardUserDefaults] boolForKey:@"XMLPlist"];
