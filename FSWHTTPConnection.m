@@ -107,7 +107,7 @@
 			NSString *iconPdf = [[NSBundle mainBundle] pathForResource:@"image2" ofType:@"gif"];
 			NSString *iconBlank = [[NSBundle mainBundle] pathForResource:@"blank" ofType:@"gif"];
 			
-			NSString *parentDirPad = [@"Name" stringByPaddingToLength:32 withString:@" " startingAtIndex:0];
+			NSString *parentDirPad = [@"Name" stringByPaddingToLength:48 withString:@" " startingAtIndex:0];
 			NSString *lastChangePad = [@"Last modified" stringByPaddingToLength:28 withString:@" " startingAtIndex:0];
 			NSString *sizePad = [@"Size" stringByPaddingToLength:28 withString:@" " startingAtIndex:0];
 			
@@ -132,8 +132,12 @@
 					
 					NSString *lastChange = [[dest lastChange] stringByPaddingToLength:28 withString:@" " startingAtIndex:0];
 					NSString *prettySize = [[dest prettySize] stringByPaddingToLength:28 withString:@" " startingAtIndex:0];
-					
-					NSString *pad = [@"" stringByPaddingToLength:(32-[[s lastPathComponent] length]) withString:@" " startingAtIndex:0]; // FIXME: crashed
+		 			
+					NSString *pad = @" ";
+					int padLength = 48-[[s lastPathComponent] length];
+					if (padLength > 0)
+						pad = [@"" stringByPaddingToLength:padLength withString:@" " startingAtIndex:0];
+				
 					[html appendFormat:@"<img src=\"%@\" /> <A HREF=\"%@\">%@</A>  %@  %@  %@\n", iconPath, dest, [s lastPathComponent], pad, lastChange, prettySize];
 				}
 			}
@@ -159,7 +163,7 @@
 					data = [errorString dataUsingEncoding:NSUTF8StringEncoding];
 					return [[[HTTPDataResponse alloc] initWithData:data] autorelease];
 				} else {		
-					return [[[HTTPDataResponse alloc] initWithData:data] autorelease];
+					return [[[HTTPDataResponse alloc] initWithData:data] autorelease]; // FIXME: return HTTP header Content-Type: text/plain
 				}
 			}
 			
