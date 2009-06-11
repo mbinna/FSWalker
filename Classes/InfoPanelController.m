@@ -19,7 +19,7 @@
 @synthesize fsItem;
 
 - (IBAction)dismissInfoPanel:(id)sender {
-	[self.navigationController dismissModalViewControllerAnimated:YES];	
+	[self dismissModalViewControllerAnimated:YES];	
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
