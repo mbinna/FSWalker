@@ -19,7 +19,7 @@
 }
 
 - (NSString *)lastChange {
-	NSDictionary *d = [[NSFileManager defaultManager] fileAttributesAtPath:self traverseLink:NO];
+	NSDictionary *d = [[NSFileManager defaultManager] attributesOfItemAtPath:self error:nil];
 	NSString *s = [[d objectForKey:NSFileModificationDate] description];
 	return s ? s : @"-";
 }
@@ -27,7 +27,7 @@
 - (NSString *)prettySize {
 	if([self isDirectory]) return @"-";
 	
-	NSDictionary *d = [[NSFileManager defaultManager] fileAttributesAtPath:self traverseLink:NO];
+	NSDictionary *d = [[NSFileManager defaultManager] attributesOfItemAtPath:self error:nil];
 	NSNumber *n = [NSNumber numberWithLongLong:[[d objectForKey:NSFileSize] longLongValue]];
 	NSString *s = [n prettyBytes];
 	return s ? s : @"-";

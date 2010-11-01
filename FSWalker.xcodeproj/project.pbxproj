@@ -281,6 +281,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FSWalker" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -359,6 +360,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -366,6 +369,8 @@
 				GCC_PREFIX_HEADER = FSWalker_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = FSWalker;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Debug;
 		};
@@ -394,7 +399,7 @@
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "3F8E0387-12FD-4E62-8838-BCB6E91E423B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3F8E0387-12FD-4E62-8838-BCB6E91E423B";
-				SDKROOT = iphoneos2.2;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};
@@ -407,7 +412,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
 		};

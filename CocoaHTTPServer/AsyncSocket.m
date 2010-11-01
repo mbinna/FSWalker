@@ -884,13 +884,13 @@ Failed:;
 	if(theDelegate == NULL)
 	{
 		NSString *message = @"Attempting to connect without a delegate. Set a delegate first.";
-		[NSException raise:AsyncSocketException format:message];
+		[NSException raise:AsyncSocketException format:@"%@", message];
 	}
 
 	if(theSocket != NULL || theSocket6 != NULL)
 	{
 		NSString *message = @"Attempting to connect while connected or accepting connections. Disconnect first.";
-		[NSException raise:AsyncSocketException format:message];
+		[NSException raise:AsyncSocketException format:@"%@", message];
 	}
 	
 	BOOL pass = YES;
@@ -927,13 +927,13 @@ Failed:;
 	if (theDelegate == NULL)
 	{
 		NSString *message = @"Attempting to connect without a delegate. Set a delegate first.";
-		[NSException raise:AsyncSocketException format:message];
+		[NSException raise:AsyncSocketException format:@"%@", message];
 	}
 	
 	if (theSocket != NULL || theSocket6 != NULL)
 	{
 		NSString *message = @"Attempting to connect while connected or accepting connections. Disconnect first.";
-		[NSException raise:AsyncSocketException format:message];
+		[NSException raise:AsyncSocketException format:@"%@", message];
 	}
 	
 	BOOL pass = YES;

@@ -103,7 +103,7 @@
 	i.parent = dir;
 	i.filename = fileName;
 	i.path = [dir stringByAppendingPathComponent:fileName];
-	i.attributes = [[NSFileManager defaultManager] fileAttributesAtPath:i.path traverseLink:NO];
+	i.attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:i.path error:nil];
 	return [i autorelease];
 }
 
