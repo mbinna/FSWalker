@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class RootViewController;
-@class InfoPanelController;
-@class DetailViewController;
 @class HTTPServer;
 
 @interface FSWalkerAppDelegate : NSObject <UIApplicationDelegate> {
@@ -19,12 +17,12 @@
 	IBOutlet UIWindow *window;
 	IBOutlet UINavigationController *navigationController;
 	IBOutlet RootViewController *rootViewController;
-	IBOutlet InfoPanelController *infoPanelController;
-	IBOutlet DetailViewController *detailViewController;
 }
 
+@property (nonatomic, retain) HTTPServer *httpServer;
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, retain) RootViewController *rootViewController;
 
 @end
 

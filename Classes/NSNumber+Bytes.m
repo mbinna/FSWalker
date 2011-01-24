@@ -7,14 +7,14 @@
 	float bytes = [self longValue];
 	NSUInteger unit = 0;
 
-	if(bytes < 1) { return @"-"; }
+	if(bytes < 1) return @"-";
 
 	while(bytes > 1024) {
 		bytes = bytes / 1024.0;
 		unit++;
 	}
 	
-	if(unit > 5) { return @"HUGE"; }
+	if(unit > 5) return @"HUGE";
 	
 	NSString *unitString = [[NSArray arrayWithObjects:@"Bytes", @"KB", @"MB", @"GB", @"TB", @"PB", nil] objectAtIndex:unit];
 	

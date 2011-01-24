@@ -7,9 +7,10 @@
 //
 
 #import "RootViewController.h"
-#import "FSWalkerAppDelegate.h"
 #import "FSItemCell.h"
 #import "DetailViewController.h"
+#import "InfoPanelController.h"
+#import "FSItem.h"
 
 @implementation RootViewController
 
@@ -32,9 +33,13 @@
 - (void)viewDidLoad {
 	// Add the following line if you want the list to be editable
 	//self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
+
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showInfo:) name:@"ShowInfo" object:nil];
 }
 
+- (void)viewDidUnload {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"ShowInfo" object:nil];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
@@ -44,7 +49,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [fsItem.children count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
@@ -77,49 +81,12 @@
 		[self.navigationController pushViewController:rvc animated:YES];
 		[rvc release];
 	} else {
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"ShowDetail" object:child];
+		DetailViewController *detailVC = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+		detailVC.fsItem = child;
+		[self.navigationController pushViewController:detailVC animated:YES];	
+		[detailVC release];
 	}
 }
-
-/*
- Override if you support editing the list
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-		
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		// Delete the row from the data source
-		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-	}	
-	if (editingStyle == UITableViewCellEditingStyleInsert) {
-		// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-	}	
-}
-*/
-
-
-/*
- Override if you support conditional editing of the list
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Return NO if you do not want the specified item to be editable.
-	return YES;
-}
-*/
-
-
-/*
- Override if you support rearranging the list
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
- Override if you support conditional rearranging of the list
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Return NO if you do not want the item to be re-orderable.
-	return YES;
-}
- */ 
-
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
@@ -136,24 +103,23 @@
 - (void)viewDidDisappear:(BOOL)animated {
 }
 
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations
 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-	// Release anything that's not essential, such as cached data
-}
-
 
 - (void)dealloc {
 	[fsItem release];	
 	[super dealloc];
 }
 
+- (void)showInfo:(NSNotification *)notification {
+	FSItem *anFSItem = [notification object];
+	InfoPanelController *infoPanelVC = [[InfoPanelController alloc] initWithNibName:@"InfoPanelController" bundle:nil];
+	infoPanelVC.fsItem = anFSItem;
+	[self.navigationController presentModalViewController:infoPanelVC animated:YES];
+	[infoPanelVC release];
+}
 
 @end
 
