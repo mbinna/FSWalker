@@ -631,6 +631,7 @@ static NSMutableArray *recentNonces;
 **/
 - (void)replyToHTTPRequest
 {
+	/*
 	// Check the HTTP version - if it's anything but HTTP version 1.1, we don't support it
 	NSString *version = [NSMakeCollectable(CFHTTPMessageCopyVersion(request)) autorelease];
 	if(!version || ![version isEqualToString:(NSString *)kCFHTTPVersion1_1])
@@ -638,6 +639,7 @@ static NSMutableArray *recentNonces;
 		[self handleVersionNotSupported:version];
 		return;
 	}
+	*/
 	
 	// Extract the method
 	NSString *method = [NSMakeCollectable(CFHTTPMessageCopyRequestMethod(request)) autorelease];
@@ -662,6 +664,7 @@ static NSMutableArray *recentNonces;
 	
 	if(contentLength == 0)
 	{
+		NSLog(@"-- NOT FOUND: %@", uri);
 		[self handleResourceNotFound];
 		
 		[httpResponse release];

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FSItem.h"
+
+@class FSItem;
 
 @interface RootViewController : UITableViewController {
 	FSItem *fsItem;

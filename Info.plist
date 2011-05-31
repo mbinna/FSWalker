@@ -10,10 +10,8 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string>Icon.png</string>
-	<key>UIPrerenderedIcon</key>
-	<string>YES</string>
 	<key>CFBundleIdentifier</key>
-	<string>ch.sente.${PRODUCT_NAME:identifier}</string>
+	<string>ch.seriot.${PRODUCT_NAME:identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -28,5 +26,7 @@
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
+	<key>UIPrerenderedIcon</key>
+	<string>YES</string>
 </dict>
 </plist>

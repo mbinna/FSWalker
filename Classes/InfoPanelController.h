@@ -15,6 +15,8 @@
 	IBOutlet UILabel *posixPermissions;
 	IBOutlet UILabel *creationDate;
 	IBOutlet UILabel *fileSize;
+    IBOutlet UILabel *dataProtectionClassLabel;
+    IBOutlet UILabel *dataProtectionClass;
 	FSItem *fsItem;
 }
 
@@ -23,6 +25,8 @@
 @property(retain) UILabel *posixPermissions;
 @property(retain) UILabel *creationDate;
 @property(retain) UILabel *fileSize;
+@property(retain) UILabel *dataProtectionClassLabel;
+@property(retain) UILabel *dataProtectionClass;
 @property(retain) FSItem *fsItem;
 
 - (IBAction)dismissInfoPanel:(id)sender;

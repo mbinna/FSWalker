@@ -16,6 +16,8 @@
 @synthesize posixPermissions;
 @synthesize creationDate;
 @synthesize fileSize;
+@synthesize dataProtectionClassLabel;
+@synthesize dataProtectionClass;
 @synthesize fsItem;
 
 - (IBAction)dismissInfoPanel:(id)sender {
@@ -23,7 +25,7 @@
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
 		// Initialization code
 	}
 	return self;
@@ -50,6 +52,16 @@
 	creationDate.text = [fsItem.creationDate description];
 	modificationDate.text = [fsItem.modificationDate description];
 	posixPermissions.text = [fsItem.posixPermissions description];
+    dataProtectionClass.text = [fsItem.attributes objectForKey:NSFileProtectionKey];
+    
+    // Directories and symbolic links don't have a protection class
+    if ([fsItem isDirectory] || [fsItem isSymbolicLink]) {
+        dataProtectionClassLabel.hidden = YES;
+        dataProtectionClass.hidden = YES;
+    } else {
+        dataProtectionClassLabel.hidden = NO;
+        dataProtectionClass.hidden = NO;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -70,6 +82,8 @@
 	[posixPermissions release];
 	[creationDate release];
 	[fileSize release];
+    [dataProtectionClassLabel release];
+    [dataProtectionClass release];
 	[fsItem release];
 	
 	[super dealloc];

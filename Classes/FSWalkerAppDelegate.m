@@ -8,8 +8,6 @@
 
 #import "FSWalkerAppDelegate.h"
 #import "RootViewController.h"
-#import "InfoPanelController.h"
-#import "DetailViewController.h"
 #import "FSItem.h"
 #import "HTTPServer.h"
 #import "FSWHTTPConnection.h"
@@ -17,8 +15,10 @@
 
 @implementation FSWalkerAppDelegate
 
+@synthesize httpServer;
 @synthesize window;
 @synthesize navigationController;
+@synthesize rootViewController;
 
 - (NSString *)myIPAddress {
 	NSString *myIP = [[[MyIP sharedInstance] ipsForInterfaces] objectForKey:@"en0"];
@@ -43,8 +43,10 @@
 	BOOL isConnectedThroughWifi = [ips objectForKey:@"en0"] != nil;
 	BOOL shouldStartServer = [[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldStartServer"];
 	
-	if(shouldStartServer && (isConnectedThroughWifi || TARGET_IPHONE_SIMULATOR)) {
-		httpServer = [[HTTPServer alloc] init];
+	NSString *myIPAddress = [self myIPAddress];
+	
+	if(shouldStartServer && (isConnectedThroughWifi || TARGET_IPHONE_SIMULATOR) && myIPAddress) {
+		self.httpServer = [[[HTTPServer alloc] init] autorelease];
 		[httpServer setType:@"_http._tcp."];
 		[httpServer setDocumentRoot:[NSURL fileURLWithPath:@"/"]];
 		[httpServer setName:[NSString stringWithFormat:@"%@ on %@", [[NSProcessInfo processInfo] processName], [[NSProcessInfo processInfo] hostName]]];
@@ -73,7 +75,7 @@
 			if(shouldShowAlert) {
 				
 				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"HTTP Server is running!"
-																message:[NSString stringWithFormat:@"The iPhone files are accessible at http://%@:%u/", [self myIPAddress], [httpServer port]]
+																message:[NSString stringWithFormat:@"The iPhone files are accessible at http://%@:%u/", myIPAddress, [httpServer port]]
 															   delegate:nil
 													  cancelButtonTitle:@"OK"
 													  otherButtonTitles:nil];
@@ -95,10 +97,7 @@
 	// Configure and show the window
 	[window addSubview:[navigationController view]];
 	[window makeKeyAndVisible];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showInfo:) name:@"ShowInfo" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showDetail:) name:@"ShowDetail" object:nil];
-	
+		
 	[self startHTTPServer];
 	
 	rootViewController.fsItem = [FSItem fsItemWithDir:@"/" fileName:@""];
@@ -136,36 +135,20 @@
 #endif
 }
 
-
 - (void)applicationWillTerminate:(UIApplication *)application {
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"ShowInfo" object:nil];
 	
 	if(httpServer) {
 		[httpServer stop];
 	}
 	
-	// TODO: save position?
+	// TODO: save path?
 }
-
 
 - (void)dealloc {
 	[httpServer release];
 	[navigationController release];
 	[window release];
 	[super dealloc];
-}
-
-- (void)showInfo:(NSNotification *)notification {
-	FSItem *fsItem = [notification object];
-	infoPanelController.fsItem = fsItem;
-	[navigationController presentModalViewController:infoPanelController animated:YES];
-}
-
-- (void)showDetail:(NSNotification *)notification {
-	FSItem *fsItem = [notification object];
-	detailViewController.fsItem = fsItem;
-	[self.navigationController pushViewController:detailViewController animated:YES];
-	
 }
 
 @end
